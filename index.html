@@ -2,8 +2,11 @@
   <script>
     var url_string = window.location.href;
     var url = new URL(url_string);
-    var c = url.searchParams.get("temp");
-    console.log(123);
-    console.log(window.location.href);
+    var temp = url.searchParams.get("temp");
+    var hum = url.searchParams.get("hum");
+    var time = url.searchParams.get("time");
+    fetch('https://firestore.googleapis.com/v1beta1/projects/testvue-6b753/databases/(default)/documents/temperature?key=AIzaSyDZRYhFRAsEauWZGVoU6Xa6GCNQIZSNRtA', 
+          {"fields":{"humidity":{"doubleValue":temp},"temperature":{"doubleValue":hum}}}
+    );
   </script>
 </html>
