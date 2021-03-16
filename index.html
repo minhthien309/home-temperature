@@ -5,8 +5,13 @@
     var temp = url.searchParams.get("temp");
     var hum = url.searchParams.get("hum");
     var time = url.searchParams.get("time");
+    var json = {"fields":{"humidity":{"doubleValue":temp},"temperature":{"doubleValue":hum}}};
     fetch('https://firestore.googleapis.com/v1beta1/projects/testvue-6b753/databases/(default)/documents/temperature?key=AIzaSyDZRYhFRAsEauWZGVoU6Xa6GCNQIZSNRtA', 
-          {"fields":{"humidity":{"doubleValue":temp},"temperature":{"doubleValue":hum}}}
+          {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify(json)
+          }
     );
   </script>
 </html>
